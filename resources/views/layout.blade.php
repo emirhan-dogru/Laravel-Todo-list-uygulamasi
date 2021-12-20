@@ -38,6 +38,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @if (Auth::user()->role == '1')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,10 +56,14 @@
                                 Çöp Kutusu</a></li>
                     </ul>
                 </li>
+                @else
+                    <a class="navbar-brand" href="#">Yönetim Paneli</a>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home.Logout')  }}">Çıkış yap</a>
                 </li>
             </ul>
+            @if (Auth::user()->role == '1')
             <form class="d-flex" action="/" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -67,6 +72,7 @@
                     </button>
                 </div>
             </form>
+            @endif
         </div>
     </div>
 </nav>
